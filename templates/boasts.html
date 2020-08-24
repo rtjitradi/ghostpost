@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GhostPost: The Boasts</title>
+</head>
+
+<body>
+    <h1>{{ page_title }}</h1>
+    <nav style="background-color: whitesmoke;">
+        <a href="/">HOME</a>
+        <br>
+        <a href="addpost/">POSTING FORM</a>
+        <br>
+        <a href="boasts/">BOASTS</a>
+        <br>
+        <a href="roasts/">ROASTS</a>
+        <br>
+        <a href="sortedvotes/">SORTED VOTES</a>
+    </nav>
+
+    {% for boast in boasts %}
+    <div style="border: 3px blue; padding: 6px;">
+        <h3>{{ boast.post_content }}</h3>
+        {% if boast.is_boast == True %}
+        <h3>Boast</h3>
+        {% else %}
+        <h3>Roast</h3>
+        {% endif %}
+
+        <a href="upvote/{{ boast.id }}/">Upvote</a>
+        <a href="downvote/{{ boast.id }}/">Downvote</a>
+
+        <h4>Posting Date & Time: {{ boast.post_datetime }}</h4>
+
+    </div>
+</body>
+
+</html>

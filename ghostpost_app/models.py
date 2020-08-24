@@ -26,7 +26,7 @@ class BoastsRoastsModel(models.Model):
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
     post_datetime = models.DateTimeField(default=timezone.now)
-    privatesecret_key= models.CharField(max_length=50) # https://docs.djangoproject.com/en/3.0/ref/settings/ and also refer to https://stackoverflow.com/questions/40856593/django-secret-key-settings
+    privatesecret_key = models.CharField(max_length=50)  # https://docs.djangoproject.com/en/3.0/ref/settings/ and also refer to https://stackoverflow.com/questions/40856593/django-secret-key-settings
 
     def __str__(self):
         return self.post_content
@@ -35,5 +35,5 @@ class BoastsRoastsModel(models.Model):
     # https://docs.python.org/3/library/functions.html#property
     @property
     def vote_score(self):
-        vote_total = self.upvote - self.downvote
-        return vote_total
+        vote_sum = self.upvotes - self.downvotes
+        return vote_sum
