@@ -9,6 +9,34 @@
 
 <body>
     <h1>{{ page_title }}</h1>
+    <nav style="background-color: whitesmoke;">
+        <a href="/">HOME</a>
+        <br>
+        <a href="addpost/">POSTING FORM</a>
+        <br>
+        <a href="boasts/">BOASTS</a>
+        <br>
+        <a href="roasts/">ROASTS</a>
+        <br>
+        <a href="sortedvotes/">SORTED VOTES</a>
+    </nav>
+    <br> {% for post in sorted_votes %}
+    <div style="padding: 3px; border: gray 2px; margin-bottom: 4px;">
+        {% if post.is_boast == True %}
+        <h3>Boast</h3>
+        {% else %}
+        <h3>Roast</h3>
+        {% endif %}
+
+        <h3>{{ post.post_content }}</h3>
+        <a href="{% url 'upvote' post.id %}">Upvote</a>{{ post.upvotes }}
+        <a href="{% url 'downvote' post.id %}">Downvote</a>{{ post.downvotes }}
+        <h3>{{ post.vote_score }}</h3>
+
+        <h4>Posting Date & Time: {{ post.post_datetime }}</h4>
+
+    </div>
+    {% endfor %}
 </body>
 
 </html>

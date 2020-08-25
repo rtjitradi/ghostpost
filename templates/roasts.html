@@ -9,6 +9,35 @@
 
 <body>
     <h1>{{ page_title }}</h1>
+    <nav style="background-color: whitesmoke;">
+        <a href="/">HOME</a>
+        <br>
+        <a href="addpost/">POSTING FORM</a>
+        <br>
+        <a href="boasts/">BOASTS</a>
+        <br>
+        <a href="roasts/">ROASTS</a>
+        <br>
+        <a href="sortedvotes/">SORTED VOTES</a>
+    </nav>
+
+    {% for roast in roasts %}
+    <div style="border: 3px red; padding: 6px;">
+        <h3>{{ roast.post_content }}</h3>
+        {% if roast.is_boast == True %}
+        <h3>Boast</h3>
+        {% else %}
+        <h3>Roast</h3>
+        {% endif %}
+        <h3>{{ roast.post_content }}</h3>
+        <a href="upvote/{{ roast.id }}/">Upvote</a>
+        <a href="downvote/{{ roast.id }}/">Downvote</a>
+        <h3>{{ roast.vote_score }}</h3>
+
+        <h4>Posting Date & Time: {{ roast.post_datetime }}</h4>
+
+    </div>
+    {% endfor %}
 </body>
 
 </html>

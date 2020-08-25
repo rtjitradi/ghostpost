@@ -29,13 +29,15 @@
         {% else %}
         <h3>Roast</h3>
         {% endif %}
-
+        <h3>{{ boast.post_content }}</h3>
         <a href="upvote/{{ boast.id }}/">Upvote</a>
         <a href="downvote/{{ boast.id }}/">Downvote</a>
+        <h3>{{ boast.vote_score }}</h3>
 
         <h4>Posting Date & Time: {{ boast.post_datetime }}</h4>
 
     </div>
+    {% endfor %}
 </body>
 
 </html>
