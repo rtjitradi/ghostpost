@@ -33,6 +33,7 @@
         {% endif %}
         <a href="{% url 'upvote' post.id %}">UPVOTE</a>
         <a href="{% url 'downvote' post.id %}">DOWNVOTE</a>
+        <h3>{{ post.vote_score }}</h3>
         <h4>Posting Date & Time: {{ post.post_datetime }}</h4>
     </div>
     {% endfor %}

@@ -20,14 +20,15 @@ def addpost_view(request):
         if addpost_form.is_valid():
             addform_data = addpost_form.cleaned_data
             private_key = get_random_secret_key()  # https://tech.serhatteker.com/post/2020-01/django-create-secret-key/
-            post = BoastsRoastsModel.objects.create(
-                is_boast=addform_data.get('is_boast'),
+            posting = BoastsRoastsModel.objects.create(
                 post_content=addform_data.get('post_content'),
+                is_boast=addform_data.get('is_boast'),
                 privatesecret_key=private_key
             )
-            return render(request, 'addpost.html', {'page_title': 'GhostPost', 'post': post})
-        addpost_form = AddPostForm()
-        return render(request, 'addpost.html', {'page_title': 'GhostPost: Posting Form', 'addpost_form': addpost_form})
+            # return render(request, 'addpost.html', {'page_title': 'GhostPost', 'posting': posting})
+            return HttpResponseRedirect(reverse('homepage'))
+    addpost_form = AddPostForm()
+    return render(request, 'addpost.html', {'page_title': 'GhostPost: Posting Form', 'addpost_form': addpost_form})
 
 
 def boasts_view(request):

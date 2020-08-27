@@ -10,15 +10,15 @@
 <body>
     <h1>{{ page_title }}</h1>
     <nav style="background-color: whitesmoke;">
-        <a href="/">HOME</a>
-        <br>
+        <a href="/">BACK TO HOME FOR MORE</a>
+        <!-- <br>
         <a href="addpost/">POSTING FORM</a>
         <br>
         <a href="boasts/">BOASTS</a>
         <br>
         <a href="roasts/">ROASTS</a>
         <br>
-        <a href="sortedvotes/">SORTED VOTES</a>
+        <a href="sortedvotes/">SORTED VOTES</a> -->
     </nav>
     <br> {% if post %}
     <h2><i>Keep this link secure; this is your private link for managing this post! <a href="{% url 'private_post' post.privatesecret_key %}">{{ post.privatesecret_key }}</a></i></h2>
@@ -27,8 +27,7 @@
     <h3>Let's start a new boast or roast below:</h3>
     <form action="" method="POST">
         {% csrf_token %} {{ addpost_form.as_p }}
-    </form>
-    {% endif %}
+        <input type="submit" value="Post This!"> </form> {% endif %}
 </body>
 
 </html>

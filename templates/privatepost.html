@@ -23,6 +23,9 @@
         <h3>{{ post.vote_score }}</h3>
 
         <h4>Posting Date & Time: {{ post.post_datetime }}</h4>
+        <br>
+        <h3>Having second thought and want to make this posting dissapear ?</h3>
+        <a href="{% url 'delete_post' post.id %}">DELETE</a>
 
     </div>
 </body>
